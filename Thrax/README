@@ -5,12 +5,12 @@ context-dependent rewrite rules into weighted finite-state transducers
 (FSTs). The FST representation uses OpenFst.
 
 REQUIREMENTS:
-  This version is known to work under Linux and MacOS using g++ (>=
-  4.2). Expected to work wherever adequate POSIX (dlopen, ssize_t, basename),
-  c99 (snprintf, strtoll, <stdint.h>), and tr1 (<tr1/ordered_set>,
-  <tr1/ordered_map>) support are available.
+  This version is known to work under Linux using g++ (≥ 4.6) and MacOS X using
+  XCode 5. Expected to work wherever adequate POSIX (dlopen, ssize_t, basename),
+  c99 (snprintf, strtoll, <stdint.h>), and C++11 (<ordered_set>, <ordered_map>,
+  <forward_list>) support are available. Requires bison.
   	
-  It is assumed you have OpenFst (www.openfst.org) 1.3.3 or higher and have
+  It is assumed you have OpenFst (www.openfst.org) 1.4.0 or higher and have
   installed it. Make sure you configure it with the --enable-far, and
   --enable-pdt flags.
 
