@@ -30,6 +30,8 @@ using std::vector;
 #include <thrax/datatype.h>
 #include <thrax/function.h>
 
+DECLARE_bool(save_symbols);  // From util/flags.cc.
+
 namespace thrax {
 namespace function {
 
@@ -122,6 +124,12 @@ class Closure : public UnaryFstFunction<Arc> {
     empty_acceptor.SetStart(p);
     empty_acceptor.SetFinal(p, Arc::Weight::One());
 
+    // If we are saving symbols then we have to add the symbol tables of our
+    // input fst to this new single state FST
+    if (FLAGS_save_symbols) {
+      empty_acceptor.SetInputSymbols(fst.InputSymbols());
+      empty_acceptor.SetOutputSymbols(fst.OutputSymbols());
+    }
     fst::VectorFst<Arc>* current = empty_acceptor.Copy();
     for (int i = max; i > 0; --i) {
       fst::Concat(fst, current);
