@@ -50,8 +50,8 @@
      "Category" "CDRewrite" "Closure" "Compose" "Concat" "Connect"
      "Determinize" "Difference" "Expand" "Feature" "FeatureVector" "Invert" "LoadFst"
      "LoadFstFromFar" "Minimize" "MPdtCompose" "Optimize" "ParadigmReplace" "PdtCompose"
-     "Project" "Replace" "Reverse" "Rewrite" "RmEpsilon" "StringFile" "StringFst"
-     "SymbolTable" "Tagger" "Union")
+     "Project" "Replace" "Reverse" "Rewrite" "RmEpsilon" "RmWeight" "StringFile"
+     "StringFst" "SymbolTable" "Tagger" "Union")
    'words))
 
 (defvar thrax-syntax "[\]\[=@:|*+\?\"(),;{}-]")
@@ -112,7 +112,9 @@
     (add-hook 'before-save-hook
       (lambda()
         (save-excursion
-          (whitespace-cleanup))))))
+        (whitespace-cleanup)))
+      nil
+      t)))
 
 ;;;###autoload
 (setq auto-mode-alist

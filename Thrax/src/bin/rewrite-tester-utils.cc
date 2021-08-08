@@ -52,9 +52,9 @@ static bool kHistoryFileInitialized = false;
 inline void InitializeHistoryFile() {
   // Create history file if it doesn't exist
   if (!Open(FLAGS_history_file, "r")) {
-    File* fp;  // Fail silently if we can't open it: just don't record history
-    if (Open(FLAGS_history_file, "w", &fp))
-      fp->Close();
+    File* fp = Open(FLAGS_history_file, "w");
+    // Fail silently if we can't open it: just don't record history
+    if (fp) fp->Close();
   }
   // This will fail silently if history_file doesn't open
   read_history(FLAGS_history_file.c_str());
