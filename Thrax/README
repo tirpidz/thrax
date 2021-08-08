@@ -36,7 +36,8 @@ USAGE:
   Syntax highlighters (for vi and emacs) and other useful tools are under
   /usr/local/share/utils.
 
-  To use in your own programs you will need to include <thrax/thrax.h>. Compile
+  To use in your own programs you will need to include <thrax/thrax.h>. The
+  compiler must support C++11 (for g++ add the flag "-std=c++0x"). Compile
   with '-I /usr/local/include' and link against /usr/local/lib/libfst.so,
   /usr/local/lib/fst/libfstfar.so and /usr/local/lib/libthrax.so
 

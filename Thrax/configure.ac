@@ -1,6 +1,7 @@
 AC_INIT([Thrax], [1.1.0], [help@www.opengrm.org])
 AM_INIT_AUTOMAKE([foreign nostdinc -Wall -Werror])
 
+CXXFLAGS="$CXXFLAGS -std=c++0x"
 AC_PROG_CXX
 AC_DISABLE_STATIC
 AC_PROG_LIBTOOL
