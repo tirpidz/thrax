@@ -137,9 +137,9 @@ am_libthrax_la_OBJECTS = ast/collection-node.lo ast/grammar-node.lo \
 	ast/import-node.lo ast/node.lo ast/return-node.lo \
 	ast/rule-node.lo ast/statement-node.lo ast/string-node.lo \
 	flags/flags.lo main/grm-compiler.lo main/lexer.lo \
-	main/parser.lo main/grm-manager.lo main/compiler-stdarc.lo \
-	main/compiler-log.lo main/compiler-log64.lo \
-	util/stripcomment.lo util/utils.lo \
+	main/parser.lo main/compiler-stdarc.lo main/compiler-log.lo \
+	main/compiler-log64.lo util/stringcompile.lo \
+	util/stringfile.lo util/stringutil.lo util/utils.lo \
 	walker/evaluator-specializations.lo \
 	walker/identifier-counter.lo walker/loader.lo \
 	walker/namespace.lo walker/printer.lo walker/stringfst.lo \
@@ -177,9 +177,10 @@ am__depfiles_remade = ast/$(DEPDIR)/collection-node.Plo \
 	flags/$(DEPDIR)/flags.Plo main/$(DEPDIR)/compiler-log.Plo \
 	main/$(DEPDIR)/compiler-log64.Plo \
 	main/$(DEPDIR)/compiler-stdarc.Plo \
-	main/$(DEPDIR)/grm-compiler.Plo main/$(DEPDIR)/grm-manager.Plo \
-	main/$(DEPDIR)/lexer.Plo main/$(DEPDIR)/parser.Plo \
-	util/$(DEPDIR)/stripcomment.Plo util/$(DEPDIR)/utils.Plo \
+	main/$(DEPDIR)/grm-compiler.Plo main/$(DEPDIR)/lexer.Plo \
+	main/$(DEPDIR)/parser.Plo util/$(DEPDIR)/stringcompile.Plo \
+	util/$(DEPDIR)/stringfile.Plo util/$(DEPDIR)/stringutil.Plo \
+	util/$(DEPDIR)/utils.Plo \
 	walker/$(DEPDIR)/evaluator-specializations.Plo \
 	walker/$(DEPDIR)/identifier-counter.Plo \
 	walker/$(DEPDIR)/loader.Plo walker/$(DEPDIR)/namespace.Plo \
@@ -394,15 +395,15 @@ libthrax_la_SOURCES = ast/collection-node.cc ast/grammar-node.cc \
                       ast/return-node.cc ast/rule-node.cc \
                       ast/statement-node.cc ast/string-node.cc flags/flags.cc \
                       main/grm-compiler.cc main/lexer.cc main/parser.yy \
-                      main/grm-manager.cc main/compiler-stdarc.cc \
-                      main/compiler-log.cc main/compiler-log64.cc \
-                      util/stripcomment.cc util/utils.cc \
+                      main/compiler-stdarc.cc main/compiler-log.cc \
+                      main/compiler-log64.cc util/stringcompile.cc \
+                      util/stringfile.cc util/stringutil.cc util/utils.cc \
                       walker/evaluator-specializations.cc \
                       walker/identifier-counter.cc walker/loader.cc \
                       walker/namespace.cc walker/printer.cc \
                       walker/stringfst.cc walker/symbols.cc walker/walker.cc
 
-libthrax_la_LDFLAGS = -version-info 132:0:0
+libthrax_la_LDFLAGS = -version-info 134:0:0
 all: all-am
 
 .SUFFIXES:
@@ -509,8 +510,6 @@ main/grm-compiler.lo: main/$(am__dirstamp) \
 	main/$(DEPDIR)/$(am__dirstamp)
 main/lexer.lo: main/$(am__dirstamp) main/$(DEPDIR)/$(am__dirstamp)
 main/parser.lo: main/$(am__dirstamp) main/$(DEPDIR)/$(am__dirstamp)
-main/grm-manager.lo: main/$(am__dirstamp) \
-	main/$(DEPDIR)/$(am__dirstamp)
 main/compiler-stdarc.lo: main/$(am__dirstamp) \
 	main/$(DEPDIR)/$(am__dirstamp)
 main/compiler-log.lo: main/$(am__dirstamp) \
@@ -523,7 +522,11 @@ util/$(am__dirstamp):
 util/$(DEPDIR)/$(am__dirstamp):
 	@$(MKDIR_P) util/$(DEPDIR)
 	@: > util/$(DEPDIR)/$(am__dirstamp)
-util/stripcomment.lo: util/$(am__dirstamp) \
+util/stringcompile.lo: util/$(am__dirstamp) \
+	util/$(DEPDIR)/$(am__dirstamp)
+util/stringfile.lo: util/$(am__dirstamp) \
+	util/$(DEPDIR)/$(am__dirstamp)
+util/stringutil.lo: util/$(am__dirstamp) \
 	util/$(DEPDIR)/$(am__dirstamp)
 util/utils.lo: util/$(am__dirstamp) util/$(DEPDIR)/$(am__dirstamp)
 walker/$(am__dirstamp):
@@ -584,10 +587,11 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@main/$(DEPDIR)/compiler-log64.Plo@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@main/$(DEPDIR)/compiler-stdarc.Plo@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@main/$(DEPDIR)/grm-compiler.Plo@am__quote@ # am--include-marker
-@AMDEP_TRUE@@am__include@ @am__quote@main/$(DEPDIR)/grm-manager.Plo@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@main/$(DEPDIR)/lexer.Plo@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@main/$(DEPDIR)/parser.Plo@am__quote@ # am--include-marker
-@AMDEP_TRUE@@am__include@ @am__quote@util/$(DEPDIR)/stripcomment.Plo@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@util/$(DEPDIR)/stringcompile.Plo@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@util/$(DEPDIR)/stringfile.Plo@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@util/$(DEPDIR)/stringutil.Plo@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@util/$(DEPDIR)/utils.Plo@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@walker/$(DEPDIR)/evaluator-specializations.Plo@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@walker/$(DEPDIR)/identifier-counter.Plo@am__quote@ # am--include-marker
@@ -797,10 +801,11 @@ distclean: distclean-am
 	-rm -f main/$(DEPDIR)/compiler-log64.Plo
 	-rm -f main/$(DEPDIR)/compiler-stdarc.Plo
 	-rm -f main/$(DEPDIR)/grm-compiler.Plo
-	-rm -f main/$(DEPDIR)/grm-manager.Plo
 	-rm -f main/$(DEPDIR)/lexer.Plo
 	-rm -f main/$(DEPDIR)/parser.Plo
-	-rm -f util/$(DEPDIR)/stripcomment.Plo
+	-rm -f util/$(DEPDIR)/stringcompile.Plo
+	-rm -f util/$(DEPDIR)/stringfile.Plo
+	-rm -f util/$(DEPDIR)/stringutil.Plo
 	-rm -f util/$(DEPDIR)/utils.Plo
 	-rm -f walker/$(DEPDIR)/evaluator-specializations.Plo
 	-rm -f walker/$(DEPDIR)/identifier-counter.Plo
@@ -871,10 +876,11 @@ maintainer-clean: maintainer-clean-am
 	-rm -f main/$(DEPDIR)/compiler-log64.Plo
 	-rm -f main/$(DEPDIR)/compiler-stdarc.Plo
 	-rm -f main/$(DEPDIR)/grm-compiler.Plo
-	-rm -f main/$(DEPDIR)/grm-manager.Plo
 	-rm -f main/$(DEPDIR)/lexer.Plo
 	-rm -f main/$(DEPDIR)/parser.Plo
-	-rm -f util/$(DEPDIR)/stripcomment.Plo
+	-rm -f util/$(DEPDIR)/stringcompile.Plo
+	-rm -f util/$(DEPDIR)/stringfile.Plo
+	-rm -f util/$(DEPDIR)/stringutil.Plo
 	-rm -f util/$(DEPDIR)/utils.Plo
 	-rm -f walker/$(DEPDIR)/evaluator-specializations.Plo
 	-rm -f walker/$(DEPDIR)/identifier-counter.Plo
