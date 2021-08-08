@@ -38,10 +38,10 @@ subdir = src/include
 DIST_COMMON = $(nobase_include_HEADERS) $(srcdir)/Makefile.am \
 	$(srcdir)/Makefile.in
 ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
-am__aclocal_m4_deps = $(top_srcdir)/m4/ax_check_icu.m4 \
-	$(top_srcdir)/m4/libtool.m4 $(top_srcdir)/m4/ltoptions.m4 \
-	$(top_srcdir)/m4/ltsugar.m4 $(top_srcdir)/m4/ltversion.m4 \
-	$(top_srcdir)/m4/lt~obsolete.m4 $(top_srcdir)/configure.ac
+am__aclocal_m4_deps = $(top_srcdir)/m4/libtool.m4 \
+	$(top_srcdir)/m4/ltoptions.m4 $(top_srcdir)/m4/ltsugar.m4 \
+	$(top_srcdir)/m4/ltversion.m4 $(top_srcdir)/m4/lt~obsolete.m4 \
+	$(top_srcdir)/configure.ac
 am__configure_deps = $(am__aclocal_m4_deps) $(CONFIGURE_DEPENDENCIES) \
 	$(ACLOCAL_M4)
 mkinstalldirs = $(install_sh) -d
@@ -105,11 +105,6 @@ EGREP = @EGREP@
 EXEEXT = @EXEEXT@
 FGREP = @FGREP@
 GREP = @GREP@
-ICU_CFLAGS = @ICU_CFLAGS@
-ICU_CONFIG = @ICU_CONFIG@
-ICU_CPPFLAGS = @ICU_CPPFLAGS@
-ICU_CXXFLAGS = @ICU_CXXFLAGS@
-ICU_LIBS = @ICU_LIBS@
 INSTALL = @INSTALL@
 INSTALL_DATA = @INSTALL_DATA@
 INSTALL_PROGRAM = @INSTALL_PROGRAM@
@@ -217,11 +212,12 @@ grm_include_headers = thrax/arcsort.h thrax/cdrewrite.h thrax/closure.h \
                       thrax/identifier-counter.h thrax/identifier-node.h \
                       thrax/import-node.h thrax/invert.h thrax/lexer.h \
                       thrax/loadfstfromfar.h thrax/loadfst.h thrax/minimize.h \
-                      thrax/namespace.h thrax/node.h thrax/optimize.h thrax/printer.h thrax/project.h \
-                      thrax/return-node.h thrax/reverse.h thrax/rewrite.h \
+                      thrax/namespace.h thrax/node.h thrax/optimize.h thrax/printer.h \
+		      thrax/project.h thrax/return-node.h thrax/reverse.h thrax/rewrite.h \
                       thrax/rmepsilon.h thrax/rule-node.h thrax/statement-node.h \
                       thrax/stringfile.h thrax/stringfst.h thrax/string-node.h \
-                      thrax/symboltable.h thrax/thrax.h thrax/union.h thrax/walker.h
+                      thrax/symbols.h thrax/symboltable.h thrax/thrax.h thrax/union.h\
+                      thrax/walker.h
 
 nobase_include_HEADERS = $(algo_include_headers) $(compat_include_headers) \
                          $(grm_include_headers)

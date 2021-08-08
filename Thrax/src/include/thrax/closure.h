@@ -19,18 +19,16 @@
 #ifndef THRAX_CLOSURE_H_
 #define THRAX_CLOSURE_H_
 
+#include <iostream>
 #include <vector>
 using std::vector;
 
 #include <fst/compat.h>
 #include <thrax/compat/compat.h>
-#include <fst/closure.h>
-#include <fst/concat.h>
-#include <fst/fst.h>
-#include <fst/vector-fst.h>
+#include <fst/fstlib.h>
 #include <thrax/fst-node.h>
-#include <thrax/function.h>
 #include <thrax/datatype.h>
+#include <thrax/function.h>
 
 namespace thrax {
 namespace function {

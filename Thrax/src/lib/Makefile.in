@@ -37,10 +37,10 @@ host_triplet = @host@
 subdir = src/lib
 DIST_COMMON = $(srcdir)/Makefile.am $(srcdir)/Makefile.in parser.cc
 ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
-am__aclocal_m4_deps = $(top_srcdir)/m4/ax_check_icu.m4 \
-	$(top_srcdir)/m4/libtool.m4 $(top_srcdir)/m4/ltoptions.m4 \
-	$(top_srcdir)/m4/ltsugar.m4 $(top_srcdir)/m4/ltversion.m4 \
-	$(top_srcdir)/m4/lt~obsolete.m4 $(top_srcdir)/configure.ac
+am__aclocal_m4_deps = $(top_srcdir)/m4/libtool.m4 \
+	$(top_srcdir)/m4/ltoptions.m4 $(top_srcdir)/m4/ltsugar.m4 \
+	$(top_srcdir)/m4/ltversion.m4 $(top_srcdir)/m4/lt~obsolete.m4 \
+	$(top_srcdir)/configure.ac
 am__configure_deps = $(am__aclocal_m4_deps) $(CONFIGURE_DEPENDENCIES) \
 	$(ACLOCAL_M4)
 mkinstalldirs = $(install_sh) -d
@@ -78,7 +78,7 @@ am_libthrax_la_OBJECTS = collection-node.lo grammar-node.lo \
 	string-node.lo flags.lo grm-compiler.lo lexer.lo parser.lo \
 	grm-manager.lo utils.lo evaluator-specializations.lo \
 	identifier-counter.lo loader.lo namespace.lo printer.lo \
-	stringfst.lo walker.lo
+	stringfst.lo symbols.lo walker.lo
 libthrax_la_OBJECTS = $(am_libthrax_la_OBJECTS)
 libthrax_la_LINK = $(LIBTOOL) --tag=CXX $(AM_LIBTOOLFLAGS) \
 	$(LIBTOOLFLAGS) --mode=link $(CXXLD) $(AM_CXXFLAGS) \
@@ -142,11 +142,6 @@ EGREP = @EGREP@
 EXEEXT = @EXEEXT@
 FGREP = @FGREP@
 GREP = @GREP@
-ICU_CFLAGS = @ICU_CFLAGS@
-ICU_CONFIG = @ICU_CONFIG@
-ICU_CPPFLAGS = @ICU_CPPFLAGS@
-ICU_CXXFLAGS = @ICU_CXXFLAGS@
-ICU_LIBS = @ICU_LIBS@
 INSTALL = @INSTALL@
 INSTALL_DATA = @INSTALL_DATA@
 INSTALL_PROGRAM = @INSTALL_PROGRAM@
@@ -248,7 +243,7 @@ libthrax_la_SOURCES = ast/collection-node.cc ast/grammar-node.cc ast/fst-node.cc
                       util/utils.cc \
                       walker/evaluator-specializations.cc walker/identifier-counter.cc \
                       walker/loader.cc walker/namespace.cc walker/printer.cc \
-                      walker/stringfst.cc walker/walker.cc
+                      walker/stringfst.cc walker/symbols.cc walker/walker.cc
 
 libthrax_la_LDFLAGS = -version-info 0:0:0
 all: all-am
@@ -347,6 +342,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/statement-node.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/string-node.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/stringfst.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/symbols.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/utils.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/walker.Plo@am__quote@
 
@@ -524,6 +520,13 @@ stringfst.lo: walker/stringfst.cc
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='walker/stringfst.cc' object='stringfst.lo' libtool=yes @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(LIBTOOL)  --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o stringfst.lo `test -f 'walker/stringfst.cc' || echo '$(srcdir)/'`walker/stringfst.cc
+
+symbols.lo: walker/symbols.cc
+@am__fastdepCXX_TRUE@	$(LIBTOOL)  --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT symbols.lo -MD -MP -MF $(DEPDIR)/symbols.Tpo -c -o symbols.lo `test -f 'walker/symbols.cc' || echo '$(srcdir)/'`walker/symbols.cc
+@am__fastdepCXX_TRUE@	$(am__mv) $(DEPDIR)/symbols.Tpo $(DEPDIR)/symbols.Plo
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='walker/symbols.cc' object='symbols.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(LIBTOOL)  --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o symbols.lo `test -f 'walker/symbols.cc' || echo '$(srcdir)/'`walker/symbols.cc
 
 walker.lo: walker/walker.cc
 @am__fastdepCXX_TRUE@	$(LIBTOOL)  --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT walker.lo -MD -MP -MF $(DEPDIR)/walker.Tpo -c -o walker.lo `test -f 'walker/walker.cc' || echo '$(srcdir)/'`walker/walker.cc
