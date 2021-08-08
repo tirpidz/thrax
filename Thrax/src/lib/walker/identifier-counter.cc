@@ -15,7 +15,6 @@
 
 #include <thrax/identifier-counter.h>
 
-#include <tr1/unordered_map>
 #include <string>
 
 #include <thrax/collection-node.h>

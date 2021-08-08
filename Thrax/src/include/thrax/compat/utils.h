@@ -116,7 +116,6 @@ class InputBuffer {
  public:
   explicit InputBuffer(File* fp) : fp_(fp) { }
   ~InputBuffer() { delete fp_; }
-  char buf[];
   bool ReadLine(string* line) {
     line->clear();
     fp_->stream()->getline(buf_, MAXLINE);
